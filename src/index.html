@@ -188,6 +188,7 @@
     </style>
 </head>
 <body>
+    <h1>Custom formio viewer</h1>
 <script type="text/javascript">
   var bodyClass = '';
   if (!query.hasOwnProperty('header') || parseInt(query.header, 10)) {
@@ -310,6 +311,10 @@
   // You must keep "window.setForm = function(form, submission, options)". This
   // is what the PDF renderer uses to generate a form with predefined form, submission, and options.
   window.setForm = function(form, submission, options) {
+      
+    // throw some error
+    return Promise.reject({ message: 'some error', failHard: true });
+      
     if (Array.isArray(submission) && submission.length) {
       var promises = [];
       submission.forEach(function(sub) {
